@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		
+		
+	      int n, m = 0, s = 1;
+	      
+	      //This loop keeps the program running infinite times.
+	      while(s == 1){
+	    	  
+	      System.out.println("Enter the number you wish to reverse!");
+	      
+	      Scanner number = new Scanner(System.in);
+	      n = number.nextInt();
+	      
+	 
+	      while( n > 0 )
+	      {   //this multiplies m by 10.
+	          m = m * 10;
+	          //this takes the input, finds the remainder and then adds it to m. this is the
+	          //reversal part.
+	          m = m + (n % 10);
+	          //this takes the input and divides it by 10. N is then sent through
+	          //the loop again.
+	          n = n / 10;
+	      }
+	 
+	      System.out.println("Reversed number is: " + m);
+	      System.out.println();
+	
+	      }
+		
+		
+
+			
+	}
+
+}
