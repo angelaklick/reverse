@@ -1,0 +1,240 @@
+package date;
+
+import java.util.Scanner;
+
+public class date {
+
+	public static void main(String[] args) {
+		
+		//This program prints the duration of two dates...give or take a day. It's mostly accurate. 
+		
+		int y = 0, m = 0, d = 0;
+		
+		Scanner reader = new Scanner(System.in);
+		
+		System.out.println("Welcome! This program tells the duration between two dates."
+				+ " Do not enter a zero before a single digit "
+				+ "number and enter year in XXXX format. Enter the early date first and the "
+				+ "later date second.");
+		
+		
+		System.out.println("Enter the first date.");
+		System.out.println();
+		
+		System.out.println("Enter the month: ");
+		int m1 = reader.nextInt();
+		
+		System.out.println("Enter the day: ");
+		int d1 = reader.nextInt();
+		
+		System.out.println("Enter the year: ");
+		int y1 = reader.nextInt();
+		System.out.println();
+		
+		System.out.println("Enter the second date.");
+		System.out.println();
+		
+		System.out.println("Enter the month: ");
+		int m2 = reader.nextInt();
+		
+		System.out.println("Enter the day: ");
+		int d2 = reader.nextInt();
+		
+		System.out.println("Enter the year: ");
+		int y2 = reader.nextInt();
+		
+		//If the months are equivalent then they are 0 months apart.
+		if(m1 == m2){
+			m = 0;
+		}
+		//The next two else if statements determine whether or not the user entered an incorrect number.
+		//A number higher than 12 isn't possible.
+		else if(m1 > 12){
+			System.out.println("You've entered a number higher than 12. Try again.");
+		}
+		else if(m2 > 12){
+			System.out.println("You've entered a number higher than 12. Try again.");
+		}
+		//If the first month is less than 7 AND the second month is higher than 6, the program will
+		//subtract the second month from the first month. The program will then take m and subtract one.
+		else if (m1 < 7 && m2 > 6){
+			m = m2 - m1;
+			m = m - 1;			
+		}
+		//I understand the 0 isn't needed for the calculation, I just feel better with it there. If the
+		//first month is greater than 5 and the second month is less than 7, you must subtract the first month
+		//from 12 and then add it to the second month to find the sum. The sum will give you the difference between
+		//m1 and m2. Again, we subtract 1 from m. This is to take into account that the two months are not exactly
+		//1 month apart. 
+		else if(m1 > 5 && m2 < 7){
+			m = (12 - m1) + (0 + m2);
+			m = m - 1;
+		}
+		//This is for if both of the months are less than 6. If so, then it finds out which of the months are 
+		//greater and subtracts the smaller number from the larger number.
+		else if(m1 > 6 && m2 > 6){
+			
+			if(m1 > m2){
+				m = m1 - m2;
+				m = m - 1;
+			}
+			else{
+				m = m2 - m1;
+				m = m - 1;
+			}
+			
+		}
+		//If both months are greater than 7, then it finds out which of the months are 
+		//greater and subtracts the smaller number from the larger number.
+		else if(m1 < 7 && m2 < 7){
+			
+			if(m1 > m2){
+				m = m1 - m2;
+				m = m - 1;
+			}
+			else{
+				m = m2 - m1;
+				m = m - 1;
+			}	
+			
+		}
+		//This is to catch anything that's incorrect. It asks the user if they entered a zero before the 
+		//wanted single digit number.
+		else{
+			System.out.println("Something isn't right. Did you put a zero before the month?");
+		}
+		
+		//days begin
+		
+		//If the days are equal then the output will be zero since there is no difference.
+		if(d1 == d2){
+			d = 0;}
+		
+		//The next else if statements will let the user know if they've entered too high of a number for certain
+		//months that only have 31 days.
+		else if(d1 == 31 && m1 == 4){
+			System.out.println("There are only 30 days in the month of " + m1 + "." + " Try again.");
+		}
+		else if(d1 == 31 && m1 == 6){
+			System.out.println("There are only 30 days in the month of " + m1 + "." + " Try again.");
+		}
+		else if(d1 == 31 && m1 == 9){
+			System.out.println("There are only 30 days in the month of " + m1 + "." + " Try again.");
+		}
+		else if(d1 == 31 && m1 == 11){
+			System.out.println("There are only 30 days in the month of " + m1 + "." + " Try again.");
+		}
+		else if(d2 == 31 && m2 == 4){
+			System.out.println("There are only 30 days in the month of " + m2 + "." + " Try again.");
+		}
+		else if(d2 == 31 && m2 == 6){
+			System.out.println("There are only 30 days in the month of " + m2 + "." + " Try again.");
+		}
+		else if(d2 == 31 && m2 == 9){
+			System.out.println("There are only 30 days in the month of " + m2 + "." + " Try again.");
+		}
+		else if(d2 == 31 && m2 == 11){
+			System.out.println("There are only 30 days in the month of " + m2 + "." + " Try again.");
+		}
+		
+		//This is to catch if the user enters a number higher than 28 for February.
+		else if(d2 > 28 && m2 == 2){
+			System.out.println("There's only 28 days in this month. Try again.");
+		}
+		else if(d2 > 28 && m2 == 2){
+			System.out.println("There's only 28 days in this month. Try again.");
+		}
+		
+		//These else if statements calculate the number of days by subtracting the first date from the
+		//correct number of days for the given month, and then adding that number to the second date.
+		else if(m1 == 1){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 2){
+			d = (28 - d1) + d2;
+		}
+		else if(m1 == 3){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 4){
+			d = (30 - d1) + d2;
+		}
+		else if(m1 == 5){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 6){
+			d = (30 - d1) + d2;
+		}
+		else if(m1 == 7){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 8){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 9){
+			d = (30 - d1) + d2;
+		}
+		else if(m1 == 10){
+			d = (31 - d1) + d2;
+		}
+		else if(m1 == 11){
+			d = (30 - d1) + d2;
+		}
+		else if(m1 == 12){
+			d = (31 - d1) + d2;
+		}
+		//If something goes wrong then this will output to the user.
+		else{
+			System.out.println("Something isn't right. Did you put a zero before the month?");	
+		}
+		
+		//years begin
+		
+		//If the years are the same then they are zero years apart.
+		if(y2 == y1){
+			y = 0;
+		}
+		//If they are one year apart, they must go through these statements that will determine
+		//whether or not they are actually one year apart or less than a year.
+		else if(y2 - y1 == 1){
+			if(m1 < m2 && y1 < y2){
+				y = 1;
+			}
+			else if(m1 > m2 && y1 > y2){
+				y = 1;
+			}
+			else{
+				y = 0;
+			}
+		}
+		else if(y2 > y1){
+			y = y2 - y1;
+			y = y - 1;
+
+		}
+		else{
+			y = y1 - y2;
+			y = y - 1;
+		}
+		
+		
+		//calculations
+		
+		//I believe these calculations are causing the result to sometimes be a day off.
+		if(d > 29){
+			m = m + 1;
+			d = d - 30;  //right here. if i change the 30 to 31 or 29, then i can get the right result. But 
+			             //sometimes the 30 works too. 
+		}
+		if (m1 < m2 && y1 < y2 ){
+			y = y + 1;
+		}
+		
+		
+		
+		System.out.println("months: " + Math.abs(m));
+		System.out.println("days:" + Math.abs(d));
+		System.out.println("years: " + y);
+		
+		}
+	}
